@@ -73,7 +73,7 @@ function shuffle(array) {
     return array;
 }
 
-function flipCard(e) {
+function matchCard(e) {
     if(e.target.classList.contains('card') 
     && !e.target.classList.contains('show') 
     && !e.target.classList.contains('open') 
@@ -83,7 +83,9 @@ function flipCard(e) {
             clickCount += 1
 
             // Open the card and add it to the openCards array
-            e.target.classList.add('open', 'show')
+            e.target.classList.remove('flip-backward')
+
+            e.target.classList.add('open', 'show', 'flip-forward')
             openCards.push(e.target)
             
             // When the openCards array has two cards,
@@ -124,7 +126,8 @@ function flipCard(e) {
                     // If cards are not in match, turn them back
                     setTimeout(function(){
                         openCards.forEach(card => {
-                            card.classList.remove('open', 'show')
+                            card.classList.remove('open', 'show', 'flip-forward')
+                            card.classList.add('flip-backward')
                         })
                         openCards=[]
                         clickCount = 0
@@ -137,10 +140,10 @@ function flipCard(e) {
 }
 
 deck.addEventListener('click', function(e){
-    flipCard(e)
+    matchCard(e)
 })
 deck.addEventListener('touchstart', function(e){
-    flipCard(e)
+    matchCard(e)
 })
 
 
@@ -163,4 +166,6 @@ modalClose.addEventListener('click', function(){
 })
 
 
-// console.log(performance.now())
+console.log(performance.now())
+
+
