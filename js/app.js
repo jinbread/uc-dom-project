@@ -108,16 +108,16 @@ deck.addEventListener('click', function(e){
                     clickCount = 0
                     matchCount += 1
     
-                    if(matchCount == 8) {
+                    if(matchCount == 1) {
                         if (moveCount < starCount) {
                             starRating = starCount - moveCount
                         } else {
                             starRating = 0
                         }
-                        
-
-                        alert('You win the game. You moved ' + moveCount + ' times with ' + starRating + ' stars!' )
-                        // document.querySelector('.container').innerHTML = `<div><h1>You win the game. You moved ${moveCount} times.</h1></div>`
+                        // show win message in modal window
+                        modal.classList.add('show')
+                        modal.classList.remove('hide')
+                        modalBodyText.innerHTML = `You win the game. You moved ${moveCount} times with ${starRating} stars!`
                     }
     
                 } else {
@@ -136,3 +136,18 @@ deck.addEventListener('click', function(e){
     
 })
 
+const modal = document.querySelector('.modal')
+const modalClose = document.querySelector('.modal-close')
+const modalRestart = document.querySelector('.modal-restart')
+const modalBodyText = document.querySelector('.modal-body-text')
+
+modalRestart.addEventListener('click', function(){
+    init()
+    modal.classList.add('hide')
+    modal.classList.remove('show')
+})
+
+modalClose.addEventListener('click', function(){
+    modal.classList.add('hide')
+    modal.classList.remove('show')
+})
