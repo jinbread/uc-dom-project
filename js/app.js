@@ -73,7 +73,7 @@ function shuffle(array) {
     return array;
 }
 
-deck.addEventListener('touchstart', function(e){
+function flipCard(e) {
     if(e.target.classList.contains('card') 
     && !e.target.classList.contains('show') 
     && !e.target.classList.contains('open') 
@@ -134,7 +134,17 @@ deck.addEventListener('touchstart', function(e){
         } 
     }
     
+}
+
+deck.addEventListener('click', function(e){
+    flipCard(e)
 })
+deck.addEventListener('touchstart', function(e){
+    flipCard(e)
+})
+
+
+// modal 
 
 const modal = document.querySelector('.modal')
 const modalClose = document.querySelector('.modal-close')
@@ -151,3 +161,6 @@ modalClose.addEventListener('click', function(){
     modal.classList.add('hide')
     modal.classList.remove('show')
 })
+
+
+// console.log(performance.now())
