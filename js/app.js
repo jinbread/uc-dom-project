@@ -108,7 +108,7 @@ deck.addEventListener('click', function(e){
                     clickCount = 0
                     matchCount += 1
     
-                    if(matchCount == 1) {
+                    if(matchCount == 8) {
                         if (moveCount < starCount) {
                             starRating = starCount - moveCount
                         } else {
