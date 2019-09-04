@@ -128,10 +128,11 @@ button {
     background: #02ccba;
     margin-left: 8px;  
     font-family: 'Open Sans', sans-serif;
+    border: 0px;
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.5;
 }
 
 .fa-close {
