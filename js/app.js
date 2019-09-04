@@ -24,14 +24,17 @@ let openCards = []
 const cardList = document.querySelectorAll('.card')
 
 let matchCount = 0;
-const starCount = 11;
-let starRating = 0;
+const starCount = 16;
+let starRating = 3;
 let clickCount = 0;
 let moveCount = 0;
 
 const moves = document.querySelector('.moves')
 moves.textContent = moveCount;
 
+let startTime = 0
+let endTime = 0
+let spendTime = 0
 
 function init() {
     shuffle(cards)
@@ -42,12 +45,15 @@ function init() {
     matchCount = 0
     clickCount = 0
     moveCount = 0
-    starRating = 0
+    starRating = 3
+    spendTime = 0
     moves.textContent = moveCount;
     stars.forEach(star => {
         star.classList.remove('fa-star-o')
         star.classList.add('fa-star')
     })
+
+    startTime = Date.now()
 
 }
 
@@ -98,6 +104,7 @@ function matchCard(e) {
                 if(moveCount > starCount - 3 && starCount - moveCount >= 0) {
                     stars[starCount - moveCount].classList.remove('fa-star')
                     stars[starCount - moveCount].classList.add('fa-star-o')
+                    starRating = starCount - moveCount
                 }
                 
                 // Find match between two cards that is opened
@@ -111,15 +118,13 @@ function matchCard(e) {
                     matchCount += 1
     
                     if(matchCount == 8) {
-                        if (moveCount < starCount) {
-                            starRating = starCount - moveCount
-                        } else {
-                            starRating = 0
-                        }
+                        endTime = Date.now();
+                        spendTime = endTime - startTime;
+                        console.log(handleTime(spendTime))
                         // show win message in modal window
                         modal.classList.add('show')
                         modal.classList.remove('hide')
-                        modalBodyText.innerHTML = `You win the game. You moved ${moveCount} times with ${starRating} stars!`
+                        modalBodyText.innerHTML = `You win the game. You moved <strong>${moveCount}</strong> times with <strong>${starRating}</strong> stars. Your time record is <strong>${handleTime(spendTime)}</strong> `
                     }
     
                 } else {
@@ -169,3 +174,20 @@ modalClose.addEventListener('click', function(){
 // console.log(performance.now())
 
 
+function handleTime(time) {
+    const date = new Date(time)
+    const minute = date.getMinutes()
+    const seconds = date.getSeconds()
+    let displayTime;
+
+    if (minute < 10 && seconds < 10) {
+        displayTime = `0${minute}:0${seconds}`
+    } else if(minute < 10 && seconds > 10) {
+        displayTime = `0${minute}:${seconds}`
+    } else if(minute > 10 && seconds < 10) {
+        displayTime = `${minute}:0${seconds}`
+    } else {
+        displayTime = `${minute}:${seconds}`
+    }
+    return displayTime
+}

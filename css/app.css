@@ -201,3 +201,16 @@ button:hover {
     animation-name: backward;
     animation-duration: .5s;
 }
+
+strong {
+    /* color: #02ccba; */
+    font-weight: 300;
+    border: 1px solid #02ccba;;
+    /* background-color: #02ccba; */
+    padding : 0 4px;
+    border-radius: 4px;
+}
+
+p {
+    line-height: 1.8;
+}
