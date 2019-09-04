@@ -73,7 +73,7 @@ function shuffle(array) {
     return array;
 }
 
-deck.addEventListener('click', function(e){
+deck.addEventListener('touchstart', function(e){
     if(e.target.classList.contains('card') 
     && !e.target.classList.contains('show') 
     && !e.target.classList.contains('open') 
