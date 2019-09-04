@@ -91,6 +91,7 @@ h3, p {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    transform: rotateY(0deg);
 }
 
 /*
