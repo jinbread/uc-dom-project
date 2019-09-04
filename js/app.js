@@ -166,6 +166,6 @@ modalClose.addEventListener('click', function(){
 })
 
 
-console.log(performance.now())
+// console.log(performance.now())
 
 
