@@ -1,17 +1,43 @@
 # Memory Game Project
 
-## Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Introduction
 
-## Instructions
+* This is Matching Card Game project for Udacity Front-end Developer Nanodegree to learn JavaScript and DOM. 
+* You can play it [here](https://matchgame.jinbread.works).
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
-To get started, open `js/app.js` and start building out the app's functionality
+### Rules
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+The rule is simple. Find cards that matches. 
+
+* You can open two cards per move.
+* When the cards are match, the color will change.
+* If it is not a match, then cards will flip backwards.
+* There are 8 pairs of cards that match. 
+* Timer will start when you load the page.
+* You can restart with the button on the top right. 
+
+### Star Rating
+
+The stars rating depends on the number of moves:
+
+* ★★★ - If you finish less than 13 moves
+* ★★☆ - If you finish in 14 moves
+* ★☆☆ - If you finish more than 15 moves
+
+## What I Learn
+
+* QuerySelector 
+* AddEventListener
+* Event Delegation
+* forEach
+* dataset
+* innerText / innerHTML / textContent
+* classList / add / remove
+* Responsive design
+* Time handling in javascript 🤮
+
 
 ## Contributing
 
