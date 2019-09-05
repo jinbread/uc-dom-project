@@ -1,15 +1,15 @@
-
-
-const cards = [
-    'fa-diamond', 'fa-diamond', 
-    'fa-paper-plane-o', 'fa-paper-plane-o', 
-    'fa-anchor', 'fa-anchor', 
-    'fa-bolt', 'fa-bolt', 
-    'fa-bomb', 'fa-bomb', 
-    'fa-cube', 'fa-cube', 
-    'fa-leaf', 'fa-leaf', 
-    'fa-bicycle', 'fa-bicycle', 
+let cards = [
+    'fa-diamond',
+    'fa-paper-plane-o',
+    'fa-anchor',
+    'fa-bolt',
+    'fa-bomb',
+    'fa-cube',
+    'fa-leaf',
+    'fa-bicycle',
 ]
+
+cards = [...cards, ...cards]
 
 function generateCard(card) {
     return `<li class="card" data-column=${card}><i class="fa ${card}"></i></li>` 
@@ -35,6 +35,10 @@ moves.textContent = moveCount;
 let startTime = 0
 let endTime = 0
 let spendTime = 0
+let timer = 0
+const timerText = document.querySelector('.timer')
+
+
 
 function init() {
     shuffle(cards)
@@ -52,8 +56,16 @@ function init() {
         star.classList.remove('fa-star-o')
         star.classList.add('fa-star')
     })
-
+    openCards = []
     startTime = Date.now()
+    setInterval(function() {
+        let realTime = Date.now()
+        if(matchCount < 8 ) {
+            timer = handleTime(realTime - startTime)
+            console.log(timer)
+            timerText.innerHTML = `<i class="fa fa-clock-o"></i> &nbsp; ${timer}`
+        }
+    }, 1000)
 
 }
 
@@ -101,7 +113,7 @@ function matchCard(e) {
                 moves.textContent = moveCount;
 
                 // If the move of the player reaches the limit, reduce the star rating
-                if(moveCount > starCount - 3 && starCount - moveCount >= 0) {
+                if(moveCount > starCount - 3 && starCount - moveCount >= 1) {
                     stars[starCount - moveCount].classList.remove('fa-star')
                     stars[starCount - moveCount].classList.add('fa-star-o')
                     starRating = starCount - moveCount
